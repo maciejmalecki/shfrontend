@@ -30,7 +30,7 @@ class S(BaseHTTPRequestHandler):
 
     def do_GET(self):
         self._set_headers()
-        self.wfile.write("<html><body><h1>" + msg + "</h1></body></html>")
+        self.wfile.write("<html><body><h1>" + msg + "</h1><script>window.setTimeout(()=>window.location.reload(),10000);</script></body></html>")
 
     def do_POST(self):
 	global msg

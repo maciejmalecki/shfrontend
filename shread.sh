@@ -1,14 +1,14 @@
 ### BEGIN INIT INFO
 # Provides:          shread
-# Required-Start:    postgresql networking
-# Required-Stop:     postgresql networking
+# Required-Start:    web networking
+# Required-Stop:     web networking
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: This is a test daemon
-# Description:       This is a test daemon
-#                    This provides example about how to
-#                    write a Init script.
+# Short-Description: SmartHome interfacing daemon
+# Description:       SmartHome interfacing daemon
 ### END INIT INFO
+
+PPID=1
 
 # Using the lsb functions to perform the operations.
 . /lib/lsb/init-functions
@@ -17,7 +17,7 @@ NAME=shread
 # Daemon name, where is the actual executable
 DAEMON=/home/maciek/sh/shread.d.sh
 # pid file for the daemon
-PIDFILE=/var/run/shread.pid
+PIDFILE=/var/run/sh/shread.pid
 
 # If the daemon is not there, then exit.
 test -x $DAEMON || exit 5

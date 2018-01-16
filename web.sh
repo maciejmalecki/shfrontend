@@ -1,23 +1,23 @@
 ### BEGIN INIT INFO
 # Provides:          web
-# Required-Start:    postgresql networking
-# Required-Stop:     postgresql networking
+# Required-Start:    networking
+# Required-Stop:     networking
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: This is a test daemon
-# Description:       This is a test daemon
-#                    This provides example about how to
-#                    write a Init script.
+# Short-Description: SmartHome web server
+# Description:       SmartHome web server
 ### END INIT INFO
+
+PPID=1
 
 # Using the lsb functions to perform the operations.
 . /lib/lsb/init-functions
 # Process name ( For display )
 NAME=shweb
 # Daemon name, where is the actual executable
-DAEMON=/home/maciek/sh/web.sh
+DAEMON=/home/maciek/sh/web.d.sh
 # pid file for the daemon
-PIDFILE=/var/run/shweb.pid
+PIDFILE=/var/run/sh/shweb.pid
 
 # If the daemon is not there, then exit.
 test -x $DAEMON || exit 5

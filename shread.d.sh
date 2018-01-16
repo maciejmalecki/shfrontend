@@ -1,4 +1,9 @@
 #!/bin/bash
 
-python /home/maciek/sh/shread.py
+APP_USER_NAME=maciek
+
+[[ $(id -u) -ne $(id -u $APP_USER_NAME) ]] && exec su - $APP_USER_NAME -c "$0 $@"
+
+python /home/maciek/sh/shread.py &
+echo $! > /var/run/sh/shread.pid
 

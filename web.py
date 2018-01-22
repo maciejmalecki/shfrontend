@@ -17,6 +17,18 @@ Send a POST request::
 """
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import SocketServer
+import logging, logging.handlers
+
+LOG_FILE_NAME='log/web.log'
+
+logging.basicConfig(level=logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh = logging.handlers.TimedRotatingFileHandler(LOG_FILE_NAME, when='midnight', backupCount=5)
+fh.setFormatter(formatter)
+fh.setLevel(logging.DEBUG)
+logger = logging.getLogger('shweb')
+logger.propagate = False
+logger.addHandler(fh)
 
 msg = 'Empty'
 
@@ -36,15 +48,18 @@ class S(BaseHTTPRequestHandler):
 	global msg
 	content_len = int(self.headers.getheader('content-length', 0))
         msg = self.rfile.read(content_len)
-	print msg
+	logger.debug(msg)
         self._set_headers()
         self.wfile.write("<html><body><h1>POST!</h1></body></html>")
+
+    def log_message(self, format, *args):
+        return
 
         
 def run(server_class=HTTPServer, handler_class=S, port=80):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
-    print 'Starting httpd...'
+    logger.info('Starting SmartHome httpd on port %d', port)
     httpd.serve_forever()
 
 if __name__ == "__main__":

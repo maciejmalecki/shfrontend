@@ -6,5 +6,5 @@ APP_USER_NAME=maciek
 
 cd /home/maciek/sh
 python web.py 8080 &
-echo $! > shweb.pid
+echo $! > run/shweb.pid
 

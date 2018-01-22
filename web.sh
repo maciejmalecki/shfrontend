@@ -17,7 +17,7 @@ NAME=shweb
 # Daemon name, where is the actual executable
 DAEMON=/home/maciek/sh/web.d.sh
 # pid file for the daemon
-PIDFILE=/home/maciek/sh/shweb.pid
+PIDFILE=/home/maciek/sh/run/shweb.pid
 
 # If the daemon is not there, then exit.
 test -x $DAEMON || exit 5

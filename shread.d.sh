@@ -6,5 +6,5 @@ APP_USER_NAME=maciek
 
 cd /home/maciek/sh
 python shread.py &
-echo $! > shread.pid
+echo $! > run/shread.pid
 

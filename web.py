@@ -65,8 +65,11 @@ def run(server_class=HTTPServer, handler_class=S, port=80):
 if __name__ == "__main__":
     from sys import argv
 
-    if len(argv) == 2:
-        run(port=int(argv[1]))
-    else:
-        run()
+    try:
+        if len(argv) == 2:
+            run(port=int(argv[1]))
+        else:
+            run()
+    except Exception as e:
+        logger.error(e)
 

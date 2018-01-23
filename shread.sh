@@ -1,7 +1,8 @@
+#!/bin/bash
 ### BEGIN INIT INFO
-# Provides:          shread
-# Required-Start:    web
-# Required-Stop:     web
+# Provides:          shread.sh
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: SmartHome interfacing daemon

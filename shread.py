@@ -37,6 +37,7 @@ def httpFailed():
     attempts = attempts + 1
     logger.info('http access failed, attempt: %d', attempts)
     if attempts > 5:
+        attempts = 0
         restartHttpd()
     return
 
